@@ -74,7 +74,7 @@ app.controller("GameController", ["$scope", "$routeParams", "$location", "userPr
   function($scope, $routeParams, $location, userProps) {
     var path = "/home";
     socket.emit("check", userProps.getUser());
-    
+
     if(userProps.getUser().gameID.toString() == "") {
       //console.log("Nice Try");
       //console.log(userProps.getUser().gameID);
@@ -87,6 +87,8 @@ app.controller("GameController", ["$scope", "$routeParams", "$location", "userPr
     //startTimer();
     removeDrawer();
     if(userProps.getUser().isDrawer) {
+      makeDrawer();
+    } else {
       makeDrawer();
     }
 
@@ -114,12 +116,12 @@ app.controller("GameController", ["$scope", "$routeParams", "$location", "userPr
       makeDrawer();
     });
 
-    socket.on("removeDrawer", function() {
-      console.log("Server says I'm not the drawer :(");
-      //console.log("Currently my gameID is " + userProps.getUser().gameID);
-      userProps.getUser().isDrawer = false;
-      removeDrawer();
-    });
+    // socket.on("removeDrawer", function() {
+    //   console.log("Server says I'm not the drawer :(");
+    //   //console.log("Currently my gameID is " + userProps.getUser().gameID);
+    //   userProps.getUser().isDrawer = false;
+    //   removeDrawer();
+    // });
 
     socket.on("clearTheScreen", function(data){
       console.log(data.name + " cleared the screen");

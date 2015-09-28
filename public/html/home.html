@@ -2,17 +2,15 @@
   <h1>Drawwithme <span class="glyphicon glyphicon-pencil"</span> <small>by Jeremy, Kyle, and Ken</small></h1>
   <hr>
   <div class="introduction">
-    <h2 class="center">Introduction to Gameplay</h2>
+    <h2 class="center">Introduction</h2>
     <p><u>How to play:</u></p>
     <ul>
       <li>Create a display name!</li>
-      <li>Join a game!</li>
-      <li>If selected as the drawer, click "start game" and draw a picture of the word you're given!</li>
-      <li>If not the drawer, try and guess the word by typing it into the chat box!</li>
-      <li>Don't be afraid to chat and have fun using the chat box during the game!</li>
+      <li>Join the <game!></game!></li>
+      <li>Chat and have fun drawing!</li>
     </ul>
   </div>
-  <!-- Let the person input their username and then upon submitting and hitting 
+  <!-- Let the person input their username and then upon submitting and hitting
   join game call the joinGame() function in the angular app -->
   <form ng-submit="joinGame()">
     <div class="form-group">
@@ -21,4 +19,12 @@
     </div>
     <button type="submit" class="btn btn-primary" ng-disable="!text">Join Game</button>
   </form>
+
+  <p>
+    <i>Note:</i>
+
+    This is a modified version of the game to run on Jeremy's website. The original
+    code can be found <a href="">here</a>. Jeremy's code simply comments out the
+    timer and game code so people can mess around and chat and draw.
+  </p>
 </div>

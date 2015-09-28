@@ -1,14 +1,13 @@
 <div class="container">
   <div class="row center">
-    <span id="gameTimer">Timer</span>
   </div>
-  
+
 <!--
   <div class="gameArea center row">
     <div class="gameButtons btn-group-vertical">
-      
+
       <a class="btn btn-block btn-primary btn-lg" role="button" ng-click="startGame()">Start Game</a>
-      
+
       <a class="btn btn-block btn-primary btn-lg" role ="button" ng-click="clearScreen()">Clear screen</a>
       <div class="btn-group">
         <a class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown">
@@ -30,7 +29,7 @@
     <div class="gameButtons btn-group-vertical">
       <!-- Button to start the game -->
       <div class="btn btn-block">
-        <button class="center-block btn btn-primary btn-lg gameButton" ng-click="startGame()">Start Game</button>
+        <button class="center-block btn btn-primary btn-lg gameButton" ng-click="startGame()" disabled>Start Game</button>
       </div>
       <!-- Button to clear the screen -->
       <div class="btn btn-block">
@@ -75,11 +74,11 @@
   </div>
 
   <hr>
-  
+
   <div class="form-control chatMessages row" id="chatMessageBox">
     <p ng-repeat="msg in messages"><b><span ng-bind="msg.name"></span></b>: <span ng-bind="msg.text"></span></p>
   </div>
-  
+
 
   <!-- Show form to allow people to send messages -->
   <div class="row">

@@ -118,14 +118,14 @@ function checkGame(gameID){
           io.to(games[gameID].players[i].userSocketID).emit("removeDrawer");
       }
     }
-    // To do: Send back userID to users. 
+    // To do: Send back userID to users.
     return;
   }, TIME_DELAY);
-  // Anything you put down here won't wait until after the three seconds. 
+  // Anything you put down here won't wait until after the three seconds.
 }
 
 // Sends a word to the appropriate user. Could shorten to one (exceedingly long)
-// line if you'd like to. 
+// line if you'd like to.
 function sendWord(gameID){
   var game = games[gameID];
   var numPlayers = game.players.length;
@@ -148,7 +148,7 @@ function startGame(gameID){
     }
     console.log("Started Timer, sent word to " + colors.red(game.players[game.drawer % numPlayers].username));
     sendWord(gameID);
-    games[gameID].wordListener = true; // We are now actively listening for the word. 
+    games[gameID].wordListener = true; // We are now actively listening for the word.
     //IO.sockets.in(gameID).emit("ping"); // Head count
     setTimeout(function() {
       // Anything in here happens at end game
@@ -176,7 +176,7 @@ router.get("/*", function(req, res) {
   res.sendFile(path.resolve(__dirname, "public/html/index.html"));
 });
 
-// Catch anything that might want to see all of the components that way in case 
+// Catch anything that might want to see all of the components that way in case
 // we need to change the above route this still prvents people from peeking
 router.get("/components/*", function(req, res) {
   res.sendFile(path.resolve(__dirname, "public/index.html"));
@@ -217,7 +217,7 @@ io.sockets.on("connection", function(socket) {
     io.sockets.in(data.game).emit("message", data);
     //checkGame(socket, 0);
     if (games[data.game].wordListener) {
-      if(data.text == words[games[data.game].wordCounter % words.length] && 
+      if(data.text == words[games[data.game].wordCounter % words.length] &&
         data.userID !== games[data.game].drawer % games[data.game].players.length){
         console.log(colors.blue(data.name + " got it right"));
         for (var i = 0; i < games[gameID].players.length; i++){
@@ -231,10 +231,10 @@ io.sockets.on("connection", function(socket) {
     }
   });
 
-  socket.on("startGame", function(gameID){
-    startGame(gameID);
-    console.log("STARTED THE FUCKING GAME")
-  });
+  // socket.on("startGame", function(gameID){
+  //   startGame(gameID);
+  //   console.log("STARTED THE FUCKING GAME")
+  // });
 
   //Clears the drawing screen in the game that called clear screen
   socket.on("clearScreen", function(data){
@@ -250,7 +250,7 @@ io.sockets.on("connection", function(socket) {
   // What to do when searching for a new game
   socket.on("lookingForGame", function(username) {
     //console.log("looking for a game...");
-    // TODO: Check games 
+    // TODO: Check games
     addPlayer(socket, username);
   });
 
@@ -266,4 +266,3 @@ server.listen(process.env.PORT || 3100, process.env.IP || "0.0.0.0", function() 
   var address = server.address();
   console.log("Server is now started on ", address.address + ":" + address.port);
 });
-
